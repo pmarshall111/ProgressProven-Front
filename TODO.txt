@@ -1,0 +1,12 @@
+- Add in grid
+- Make sure grid looks nice and is responsive
+- Add in redux
+
+- Create opening page that people see when they've not logged in.
+- Create sign in form, goals submit form and forgotten work form.
+
+- Add backend inc auth
+- Set up database
+- Get api routes working
+
+- Polish up styling

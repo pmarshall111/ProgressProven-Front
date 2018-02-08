@@ -1,0 +1,6 @@
+.app {
+  background: skyblue;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}

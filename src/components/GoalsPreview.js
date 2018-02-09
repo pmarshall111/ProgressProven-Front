@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 
+import "../css/Goals.css";
+
 export default class GoalsPreview extends Component {
   render() {
     return (
       <section className="goals-preview">
         <ul>
-          <li>
+          <li className="goal-item">
             <p>Goal 1</p>
-            <div className="goal-item achieved" />
+            <div className="goal-achieved achieved" />
           </li>
         </ul>
       </section>

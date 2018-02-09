@@ -1,0 +1,17 @@
+.title {
+  grid-area: title;
+  display: grid;
+  grid-template-columns: minmax(50px, 200px) 1fr minmax(50px, 200px);
+  place-items: center;
+  background: yellow;
+}
+
+.title h1 {
+  grid-column: 2;
+}
+
+.title button {
+  grid-column: 3;
+  align-self: start;
+  justify-self: end;
+}

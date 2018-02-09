@@ -1,0 +1,4 @@
+.stats-preview {
+  grid-area: stats;
+  background: brown;
+}

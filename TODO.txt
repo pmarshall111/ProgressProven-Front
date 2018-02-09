@@ -3,10 +3,27 @@
 - Add in redux
 
 - Create opening page that people see when they've not logged in.
-- Create sign in form, goals submit form and forgotten work form.
+- Create sign in/sign up form, goals submit form and forgotten work form.
 
 - Add backend inc auth
-- Set up database
+- Set up database with all things we want
 - Get api routes working
 
+- Turn data from API into nice D3 visualisations for Stats page
+
 - Polish up styling
+- Consider security on API. 3 login attempts? Throttling requests on server to prevent
+brute force?
+
+
+
+09/02:
+- Currently have working google oauth and local login with error messages
+- Quotes added to backend
+- Add goal form added and other barebones sections
+
+
+next steps... completing the schema - how do we want to access the goals and data?,
+complete stats page barebones - add visualisations later,
+connect front end to backend
+big chunk of styling needed

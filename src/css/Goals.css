@@ -1,0 +1,46 @@
+.goals-preview {
+  grid-area: goals;
+  width: 100%;
+  background: red;
+}
+
+.goal-item {
+  display: flex;
+}
+
+.goal-item p {
+  margin: 0;
+  flex: 1;
+}
+
+.goal-achieved {
+  border: 1px solid black;
+  display: inline-block;
+  height: 1em;
+  width: 1em;
+  margin-right: 1em;
+  position: relative;
+}
+
+.achieved::after {
+  content: "";
+  position: absolute;
+  height: 2px;
+  width: 8px;
+  bottom: 3px;
+  background: black;
+  border-radius: 1em;
+  transform: rotate(45deg);
+}
+
+.achieved::before {
+  content: "";
+  position: absolute;
+  height: 2px;
+  width: 16px;
+  bottom: 7px;
+  left: 2px;
+  background: black;
+  border-radius: 1em;
+  transform: rotate(-60deg);
+}

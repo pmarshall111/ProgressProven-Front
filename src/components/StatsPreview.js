@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 
+import "../css/Stats.css";
+
 export default class StatsPreview extends Component {
   render() {
     return (

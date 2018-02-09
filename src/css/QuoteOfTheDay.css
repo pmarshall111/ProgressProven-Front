@@ -1,0 +1,4 @@
+.quote-of-the-day {
+  grid-area: quote;
+  background: green;
+}

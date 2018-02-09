@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 
+import "../css/Profile.css";
+
 export default class ProfilePreview extends Component {
   render() {
     return (

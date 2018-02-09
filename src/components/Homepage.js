@@ -7,17 +7,21 @@ import GoalsPreview from "./GoalsPreview";
 import QuoteOfTheDay from "./QuoteOfTheDay";
 import StatsPreview from "./StatsPreview";
 
+import "../css/Homepage.css";
+
 export default class Homepage extends Component {
   render() {
     return (
-      <main className="homepage grid">
-        <Title />
-        <StartWork />
-        <ProfilePreview />
-        <GoalsPreview />
-        <QuoteOfTheDay />
-        <StatsPreview />
-      </main>
+      <div className="app">
+        <main className="homepage grid">
+          <Title />
+          <StartWork />
+          <ProfilePreview />
+          <GoalsPreview />
+          <QuoteOfTheDay />
+          <StatsPreview />
+        </main>
+      </div>
     );
   }
 }

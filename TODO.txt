@@ -16,14 +16,7 @@
 brute force?
 
 
+13/02
 
-09/02:
-- Currently have working google oauth and local login with error messages
-- Quotes added to backend
-- Add goal form added and other barebones sections
-
-
-next steps... completing the schema - how do we want to access the goals and data?,
-complete stats page barebones - add visualisations later,
-connect front end to backend
-big chunk of styling needed
+-Welcome page styling started. Needs to have some OOOOMPH. Next steps are to do the
+What is it, How it works sections

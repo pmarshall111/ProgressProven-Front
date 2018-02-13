@@ -1,5 +1,4 @@
-.grid {
-  display: grid;
+.homepage {
   grid-template-areas:
     "title title title"
     "start start start"
@@ -8,7 +7,16 @@
     "profi goals stats"
     "profi quote stats"
     "profi quote stats";
-  grid-template-columns: repeat(3, 1fr);
-  grid-auto-rows: 10%;
-  justify-items: center;
+  grid-template-columns: repeat(3, 20vw);
+  grid-auto-rows: 6vh;
+  text-align: center;
+  grid-gap: 10px;
+}
+
+.grid {
+  display: grid;
+}
+
+* {
+  outline: 1px solid black;
 }

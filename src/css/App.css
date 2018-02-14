@@ -6,3 +6,7 @@
   align-content: center;
   height: 100vh;
 }
+
+:root {
+  --homepage-hover-transition: all 0.2s;
+}

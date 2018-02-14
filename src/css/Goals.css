@@ -1,7 +1,20 @@
-.goals-preview {
+.goals-preview-container {
   grid-area: goals;
-  width: 100%;
+  display: grid;
+  place-items: center;
+}
+
+.goals-preview {
+  width: 98%;
+  height: 98%;
   background: red;
+  transition: var(--homepage-hover-transition);
+  cursor: pointer;
+}
+
+.goals-preview:hover {
+  width: 100%;
+  height: 100%;
 }
 
 .goal-item {

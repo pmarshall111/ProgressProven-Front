@@ -19,7 +19,7 @@
   display: flex;
 }
 
-.auth-form label {
+form label {
   padding: 5px;
   position: absolute;
   top: 25px;
@@ -27,13 +27,13 @@
   transition: all 0.3s;
 }
 
-.auth-form input {
+form input {
   padding: 10px;
   margin: 20px;
   flex: 1;
 }
 
-.auth-form button {
+form button {
   margin: 20px;
   padding: 10px;
 }

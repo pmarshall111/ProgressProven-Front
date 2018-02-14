@@ -1,4 +1,17 @@
-.stats-preview {
+.stats-preview-container {
   grid-area: stats;
+  display: grid;
+  place-items: center;
+}
+
+.stats-preview {
+  width: 98%;
+  height: 98%;
   background: brown;
+  transition: var(--homepage-hover-transition);
+}
+
+.stats-preview:hover {
+  width: 100%;
+  height: 100%;
 }

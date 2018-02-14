@@ -8,7 +8,7 @@ import Badges from "./Badges";
 export default class ProfilePage extends Component {
   render() {
     return (
-      <section className="profile-page">
+      <section className="profile-page-container">
         <Banner title="Your Profile" exit="/" />
         <Profile />
         <CompleteProfile />

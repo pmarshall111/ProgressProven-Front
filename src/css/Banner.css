@@ -1,0 +1,15 @@
+.banner {
+  font-size: 4vw;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  padding: 10px;
+  border-bottom: 3px solid black;
+}
+
+.banner a {
+  display: flex;
+}
+
+.banner button {
+  align-self: flex-start;
+}

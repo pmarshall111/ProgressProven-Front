@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import Auth from "./Auth";
+import PageBreak from "./PageBreak";
+import HowItWorks from "./HowItWorks";
 
 import "../css/Welcome.css";
 
@@ -14,15 +16,10 @@ export default class Welcome extends Component {
           </div>
           <Auth />
         </div>
+        <PageBreak title="How it Works" />
+        <HowItWorks />
+        <PageBreak title="Why Use ProgressProven" />
       </section>
     );
   }
 }
-
-// <div className="square" id="sq1" />
-// <div className="square" id="sq2" />
-// <div className="square" id="sq3" />
-// <div className="square" id="sq4" />
-// <div className="square" id="sq5" />
-// <div className="square" id="sq6" />
-// <div className="square" id="sq7" />

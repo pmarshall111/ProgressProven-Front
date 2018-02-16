@@ -5,11 +5,13 @@ import Profile from "./Profile";
 import CompleteProfile from "./CompleteProfile";
 import Badges from "./Badges";
 
-export default class ProfilePage extends Component {
+import "../css/Profile.css";
+
+export default class YourProfile extends Component {
   render() {
     return (
       <section className="profile-page-container">
-        <Banner title="Your Profile" exit="/" />
+        <Banner title="Your Profile" exit="/home" />
         <Profile />
         <CompleteProfile />
         <Badges />

@@ -1,22 +1,3 @@
-.goals-preview-container {
-  grid-area: goals;
-  display: grid;
-  place-items: center;
-}
-
-.goals-preview {
-  width: 98%;
-  height: 98%;
-  background: red;
-  transition: var(--homepage-hover-transition);
-  cursor: pointer;
-}
-
-.goals-preview:hover {
-  width: 100%;
-  height: 100%;
-}
-
 .goal-item {
   display: flex;
 }
@@ -26,34 +7,26 @@
   flex: 1;
 }
 
-.goal-achieved {
-  border: 1px solid black;
-  display: inline-block;
-  height: 1em;
-  width: 1em;
-  margin-right: 1em;
-  position: relative;
+.goals-header {
+  display: flex;
+  text-align: left;
+  align-items: center;
 }
 
-.achieved::after {
-  content: "";
-  position: absolute;
-  height: 2px;
-  width: 8px;
-  bottom: 3px;
-  background: black;
-  border-radius: 1em;
-  transform: rotate(45deg);
+.goals-header h2 {
+  flex: 1;
+  padding: 10px;
 }
 
-.achieved::before {
-  content: "";
-  position: absolute;
-  height: 2px;
-  width: 16px;
-  bottom: 7px;
-  left: 2px;
-  background: black;
-  border-radius: 1em;
-  transform: rotate(-60deg);
+.goals-header button {
+  align-self: center;
+}
+
+.goals-list {
+  display: flex;
+  text-align: center;
+}
+
+.goals-list > * {
+  flex: 1;
 }

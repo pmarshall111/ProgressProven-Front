@@ -1,16 +1,21 @@
+.logo-top {
+  position: absolute;
+}
+
 .homepage {
-  grid-template-areas:
-    "title title title"
-    "start start start"
-    "start start start"
-    "profi goals stats"
-    "profi goals stats"
-    "profi quote stats"
-    "profi quote stats";
-  grid-template-columns: repeat(3, 20vw);
-  grid-auto-rows: 6vh;
+  grid-template-columns: 80vw;
+  grid-template-rows: auto 65vh 10vh;
+  grid-auto-flow: row;
   text-align: center;
   grid-gap: 10px;
+}
+
+.homepage-main-content {
+  overflow-y: scroll;
+}
+
+.homepage-main-content > * {
+  margin: 0 5%;
 }
 
 .grid {
@@ -19,4 +24,16 @@
 
 * {
   outline: 1px solid black;
+}
+
+.homepage nav {
+  display: flex;
+}
+
+nav a {
+  flex: 1;
+}
+
+.nav-item {
+  padding: 1em;
 }

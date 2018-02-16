@@ -4,6 +4,7 @@
   grid-template-columns: 1fr auto;
   padding: 10px;
   border-bottom: 3px solid black;
+  text-align: left;
 }
 
 .banner a {

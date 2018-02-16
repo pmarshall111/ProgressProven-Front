@@ -1,5 +1,4 @@
 .quote-of-the-day-container {
-  grid-area: quote;
   display: grid;
   place-items: center;
 }

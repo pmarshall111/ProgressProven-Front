@@ -16,14 +16,33 @@ export default class Showcase extends Component {
     this.addDots();
 
     var letterbox = document.querySelector(".showcase-letterbox");
-    letterbox.addEventListener("wheel", e => this.alterShowcase(e, "wheel"));
+    letterbox.addEventListener("wheel", e => {
+      e.preventDefault();
+      this.alterShowcase(e, "wheel");
+    });
+
+    window.addEventListener("resize", this.addDots);
   }
 
   addDots() {
-    var letterbox = document.querySelector(".showcase-letterbox");
-    var target = document.querySelector(".target");
+    var dots = document.querySelectorAll(".showcase-dot");
+    dots.forEach(dot => dot.remove());
 
-    var numbDots = Math.ceil(letterbox.offsetWidth / target.offsetWidth);
+    var targetContainer = document.querySelector(".target-container");
+    var letterbox = document.querySelector(".showcase-letterbox");
+
+    var numbDots = Math.min(
+      Math.max(
+        Math.ceil(
+          (targetContainer.scrollWidth - letterbox.offsetWidth) /
+            letterbox.offsetWidth
+        ),
+        1
+      ),
+      6
+    );
+    if (this.state.currentDot >= numbDots)
+      this.setState({ currentDot: numbDots - 1 });
 
     var container = document.querySelector(".showcase-dot-container");
     for (let i = 0; i < numbDots; i++) {
@@ -32,7 +51,9 @@ export default class Showcase extends Component {
       if (i === this.state.currentDot) div.classList.add("active-dot");
       div.setAttribute(
         "data-scroll",
-        i * letterbox.offsetWidth / (numbDots - 1)
+        i *
+          (targetContainer.scrollWidth - letterbox.offsetWidth) /
+          (numbDots - 1)
       );
       div.addEventListener("click", e => {
         const { currentDot } = this.state;
@@ -48,6 +69,7 @@ export default class Showcase extends Component {
 
   alterShowcase(e, origin) {
     const targetContainer = document.querySelector(".target-container");
+    const letterbox = document.querySelector(".showcase-letterbox");
     var currentTransform = targetContainer.style.transform.match(/-\d+/);
     if (!currentTransform) currentTransform = 0;
 
@@ -55,7 +77,7 @@ export default class Showcase extends Component {
       case "right":
         targetContainer.style.transform = `translateX(${Math.max(
           +currentTransform - 100,
-          -targetContainer.offsetWidth
+          -targetContainer.scrollWidth + letterbox.offsetWidth
         )}px)`;
         break;
       case "left":
@@ -77,19 +99,20 @@ export default class Showcase extends Component {
         } else {
           targetContainer.style.transform = `translateX(${Math.max(
             +currentTransform - 100,
-            -targetContainer.offsetWidth
+            -targetContainer.scrollWidth + letterbox.offsetWidth
           )}px)`;
         }
     }
     return this.changeActiveDot(
       targetContainer.style.transform.match(/-\d+/),
-      targetContainer.offsetWidth
+      targetContainer.scrollWidth - letterbox.offsetWidth
     );
   }
 
   changeActiveDot(currentTransform, containerWidth) {
     const { currentDot } = this.state;
     const dots = document.querySelectorAll(".showcase-dot");
+    if (dots.length === 1) return;
     var lowerTarget = (currentDot + 1) * -containerWidth / (dots.length - 1),
       upperTarget = (currentDot - 1) * -containerWidth / (dots.length - 1);
 

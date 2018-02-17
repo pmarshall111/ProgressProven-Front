@@ -33,10 +33,7 @@ export default class Homepage extends Component {
               <Route path="/home/stats" component={Stats} />
             </Switch>
           </div>
-          <div>
-            <StartWork />
-            <QuoteOfTheDay />
-          </div>
+          <StartWork />
         </main>
       </div>
     );

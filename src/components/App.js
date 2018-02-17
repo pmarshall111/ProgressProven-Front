@@ -12,6 +12,7 @@ import YourProfile from "./YourProfile";
 import Stats from "./Stats";
 
 import Auth from "./Auth";
+import TargetCollection from "./TargetCollection";
 
 import "../css/App.css";
 
@@ -46,6 +47,7 @@ class App extends Component {
           <Route exact path="/stats" component={Stats} />
           <Route exact path="/welcome" component={Welcome} />
           <Route exact path="/auth" component={Auth} />
+          <Route exact path="/target-coll" component={TargetCollection} />
         </Switch>
       </div>
     );

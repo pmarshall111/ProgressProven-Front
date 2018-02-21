@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-import TargetCollection from "./TargetCollection";
+import Showcase from "./Showcase";
+import Targets from "./Targets";
 
 class DisplayGoals extends Component {
   constructor(props) {
@@ -14,21 +15,11 @@ class DisplayGoals extends Component {
 
   render() {
     //needs access to user data to display goals.
-    const title = this.props.active ? "Active Goals" : "Previous Goals";
     var userGoals = [
       {
         title: "Cooking",
-        targetCollection: [
-          {
-            period: 1,
-            startDate: new Date(70000),
-            repeating: true,
-            targetHistory: [
-              { start: 1, end: 2, targetTime: 5, currentTime: 5.1 },
-              { start: 3, end: 4, targetTime: 5, currentTime: 4.1 }
-            ]
-          }
-        ]
+        targets: [],
+        time: []
       },
       { title: "Walking Toby" },
       { title: "Web dev" }
@@ -43,24 +34,22 @@ class DisplayGoals extends Component {
       currentGoal = this.state.activeGoal;
     }
 
-    console.log(currentGoal);
-
-    var collections = currentGoal.targetCollection.map(collection => {
-      return <TargetCollection targets={collection.targetHistory} />;
-    });
+    //need to calculate completion percentage etc in Target component
+    var targetItems = currentGoal.targets.map(x => (
+      <Targets data={x} time={currentGoal.time} />
+    ));
 
     return (
       <div>
         <div className="goals-header">
-          <h2>{title}</h2>
-          {this.props.active && (
-            <Link to="/goals/new">
-              <button>Add new</button>
-            </Link>
-          )}
+          <h2>Areas of Improvement</h2>
+          <Link to="/home/goals/new">
+            <button>Add new</button>
+          </Link>
         </div>
         <div className="goals-list">{goals}</div>
-        <div>{collections}</div>
+        <Showcase data={currentGoal.time} />
+        <div className="target-group-container">{targetItems}</div>
       </div>
     );
   }

@@ -10,8 +10,7 @@ export default class Goals extends Component {
     return (
       <section className="goal-page">
         <Banner title="Goals" exit="/home" />
-        <DisplayGoals active={true} />
-        <DisplayGoals active={false} />
+        <DisplayGoals />
       </section>
     );
   }

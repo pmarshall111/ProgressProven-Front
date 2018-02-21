@@ -3,15 +3,24 @@
 }
 
 .homepage {
-  grid-template-columns: 80vw;
-  grid-template-rows: auto 65vh 10vh;
-  grid-auto-flow: row;
+  display: flex;
+  width: 80vw;
+  max-height: 80vh;
+  flex-direction: column;
   text-align: center;
-  grid-gap: 10px;
+  margin: auto;
+  transition: all 0.3s;
+}
+
+.homepage-out-of-the-way {
+  max-height: 95vh;
+  transition: all 0.3s;
 }
 
 .homepage-main-content {
   overflow-y: scroll;
+  flex: 1;
+  min-height: 65vh;
 }
 
 .homepage-main-content > * {
@@ -28,6 +37,8 @@
 
 .homepage nav {
   display: flex;
+  margin-bottom: 10px;
+  flex-shrink: 0;
 }
 
 nav a {

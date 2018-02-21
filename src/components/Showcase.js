@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import Target from "./Target";
+import Time from "./Time";
 import "../css/Showcase.css";
 
 export default class Showcase extends Component {
@@ -31,6 +31,7 @@ export default class Showcase extends Component {
     var targetContainer = document.querySelector(".target-container");
     var letterbox = document.querySelector(".showcase-letterbox");
 
+    if (!targetContainer || !letterbox) return;
     var numbDots = Math.min(
       Math.max(
         Math.ceil(
@@ -128,18 +129,10 @@ export default class Showcase extends Component {
   }
 
   render() {
-    var targets = [
-      { start: "1st Dec 17", finish: "8th Dec 17", time: "4 hours 13 minutes" },
-      { start: "1st Dec 17", finish: "8th Dec 17", time: "4 hours 13 minutes" },
-      { start: "1st Dec 17", finish: "8th Dec 17", time: "4 hours 13 minutes" },
-      { start: "1st Dec 17", finish: "8th Dec 17", time: "4 hours 13 minutes" },
-      { start: "1st Dec 17", finish: "8th Dec 17", time: "4 hours 13 minutes" },
-      { start: "1st Dec 17", finish: "8th Dec 17", time: "4 hours 13 minutes" },
-      { start: "1st Dec 17", finish: "8th Dec 17", time: "4 hours 13 minutes" },
-      { start: "1st Dec 17", finish: "8th Dec 17", time: "4 hours 13 minutes" }
-    ];
-
-    var targetItems = targets.map(x => <Target data={x} />);
+    var timeItems = this.props.data.map(x => <Time data={x} />);
+    if (timeItems.length === 0) {
+      timeItems = "No time to display";
+    }
     return (
       <div className="showcase-container">
         <div
@@ -151,7 +144,7 @@ export default class Showcase extends Component {
           onClick={e => this.alterShowcase(e, "right")}
         />
         <div className="showcase-letterbox">
-          <div className="target-container">{targetItems}</div>
+          <div className="target-container">{timeItems}</div>
         </div>
         <div className="showcase-dot-container" />
       </div>

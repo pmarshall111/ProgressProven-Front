@@ -6,7 +6,7 @@ export default class Stats extends Component {
   render() {
     return (
       <section className="stats-page">
-        <Banner title="Stats" exit="/" />
+        <Banner title="Stats" exit="/home" />
       </section>
     );
   }

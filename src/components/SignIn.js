@@ -14,8 +14,9 @@ class SignIn extends Component {
     this.submit = this.submit.bind(this);
     this.redirect = this.redirect.bind(this);
   }
+
   redirect() {
-    this.props.history.push("/");
+    this.props.history.push("/home");
   }
 
   submit(vals) {

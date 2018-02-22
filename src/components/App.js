@@ -12,6 +12,7 @@ import YourProfile from "./YourProfile";
 import Stats from "./Stats";
 
 import Auth from "./Auth";
+import NewGoalForm from "./forms/NewGoalForm";
 
 import "../css/App.css";
 
@@ -26,7 +27,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    //commented out for testing
+    // commented out for testing
     // if (!this.props.user) {
     //   console.log(this.props);
     //   this.props.currentUser(() => {
@@ -46,6 +47,7 @@ class App extends Component {
           <Route exact path="/stats" component={Stats} />
           <Route exact path="/welcome" component={Welcome} />
           <Route exact path="/auth" component={Auth} />
+          <Route exact path="/test" component={NewGoalForm} />
         </Switch>
       </div>
     );

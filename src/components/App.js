@@ -28,12 +28,12 @@ class App extends Component {
 
   componentDidMount() {
     // commented out for testing
-    // if (!this.props.user) {
-    //   console.log(this.props);
-    //   this.props.currentUser(() => {
-    //     this.redirect();
-    //   });
-    // }
+    if (!this.props.user) {
+      console.log(this.props);
+      this.props.currentUser(() => {
+        this.redirect();
+      });
+    }
   }
 
   render() {

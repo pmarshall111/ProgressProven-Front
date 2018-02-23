@@ -24,7 +24,7 @@ export default class Homepage extends Component {
       this.setState({ mainClass: "homepage homepage-out-of-the-way" });
     else if (
       this.state.mainClass === "homepage homepage-out-of-the-way" &&
-      this.props.location.pathname === "/home"
+      this.props.location.pathname.length == 5
     )
       this.setState({ mainClass: "homepage" });
   }

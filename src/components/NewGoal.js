@@ -18,34 +18,7 @@ class NewGoal extends Component {
   }
 
   submit(values) {
-    console.log(values);
-    const { subject } = values;
-
-    var keys = Object.keys(values);
-    var values = Object.values(values);
-    var targets = [];
-
-    for (var i = 0; i < keys.length; i++) {
-      if (keys[i] == "subject") continue;
-      var arrayPosition = +keys[i].slice(-1);
-      var keyToDb = keys[i].slice(0, -1);
-      if (!targets[arrayPosition]) {
-        targets.push({ [keyToDb]: values[i] });
-      } else {
-        targets[arrayPosition][keyToDb] = values[i];
-      }
-    }
-
-    var sendToDb = {
-      subject,
-      targets
-    };
-
-    console.log(sendToDb);
-
-    // this.props.createGoalActionCreator(sendToDb, () => this.redirect());
-
-    //send off action creator here
+    this.props.createGoalActionCreator(values, () => this.redirect());
   }
 
   render() {

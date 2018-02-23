@@ -12,11 +12,9 @@ class RenderTargets extends Component {
     ];
 
     if (fields.length === 0) {
-      console.log("running");
       fields.push({ targetTime: 1, timePeriod: 1 });
       fields.push({ targetTime: 10, timePeriod: 7 });
       fields.push({ targetTime: 20, timePeriod: 7 });
-      console.log(fields.getAll());
     }
     return (
       <div className="new-goal-target-container">
@@ -31,7 +29,6 @@ class RenderTargets extends Component {
                 </option>
               );
             });
-            console.log(field.get(1), startingVals[1]);
             return (
               <div className="new-goal-target-item" key={`target${idx}`}>
                 <div className="new-goal-target-header">

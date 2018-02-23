@@ -1,4 +1,4 @@
-const ROOT_URL =
+export const ROOT_URL =
   process.env.NODE_ENV === "production" ? "fill in" : "http://localhost:5000";
 
 export const CURRENT_USER = "CURRENT_USER";
@@ -14,7 +14,7 @@ export function currentUser(callback) {
     if (!user.error) {
       return dispatch({
         type: CURRENT_USER,
-        payload: user
+        payload: user.user
       });
     } else {
       console.log("activating callback");

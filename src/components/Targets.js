@@ -1,13 +1,22 @@
 import React, { Component } from "react";
+import * as moment from "moment";
+moment().format();
 
 export default class Target extends Component {
   render() {
-    const { targetTime, startDate, timePeriod, fillAllWeeks } = this.props;
+    var { targetTime, startDate, timePeriod, fillAllWeeks } = this.props.data;
+    console.log(this.props);
+    targetTime = moment(targetTime).date() - 1 + moment(targetTime).hours();
+    timePeriod = moment(timePeriod).date();
+    startDate = moment(startDate).format("dddd, MMMM Do YYYY");
+
+    // console.log([moment(targetTime), targetTime, timePeriod]);
     return (
       <div className="target-container">
         <div className="target-title">
           <h2>
-            Target: {targetTime} hours in {timePeriod}
+            Target: {targetTime} hour{targetTime > 1 && "s"} in {timePeriod} day{timePeriod >
+              1 && "s"}
           </h2>
           <div className="target-settings">Settings</div>
         </div>

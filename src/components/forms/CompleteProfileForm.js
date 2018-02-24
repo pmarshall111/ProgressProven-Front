@@ -9,13 +9,25 @@ class CompleteProfileForm extends Component {
     // this.handleBlur = this.handleBlur.bind(this);
   }
 
+  componentDidMount() {
+    var inputs = document.querySelectorAll(".grouped-input");
+    inputs.forEach(inputGroup => {
+      var label = inputGroup.querySelector("label");
+      var input = inputGroup.querySelector("input");
+
+      label.style.transform = `translateY(${input.offsetHeight / 2 -
+        label.offsetHeight / 2}px) scale(0.8)`;
+    });
+  }
+
   handleFocus(labelId) {
     let label = document.querySelector(labelId);
+    let input = document.querySelector(`${labelId}-input`);
     if (labelId === "#complete-dob") {
-      let input = document.querySelector(`${labelId}-input`);
       input.style.color = "black";
+      console.log(input.getBoundingClientRect(), input.offsetHeight);
     }
-    label.style.transform = "translateY(-30px) scale(0.8)";
+    label.style.transform = `translateY(-30px) scale(0.8)`;
   }
 
   handleBlur(labelId, inputId) {
@@ -24,7 +36,8 @@ class CompleteProfileForm extends Component {
     setTimeout(() => {
       input.style.color = "transparent";
       let label = document.querySelector(labelId);
-      label.style.transform = "";
+      label.style.transform = `translateY(${input.offsetHeight / 2 -
+        label.offsetHeight / 2}px) scale(0.8)`;
     }, 100);
   }
 

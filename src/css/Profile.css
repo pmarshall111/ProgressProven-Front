@@ -12,6 +12,11 @@
   grid-area: 1 / 1 / span 4 / span 1;
 }
 
+input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
 .user-details {
   grid-area: 1 / 2 /span 4 / span 2;
   grid-template-columns: 1fr 1fr;

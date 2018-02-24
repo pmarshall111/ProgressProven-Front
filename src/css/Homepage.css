@@ -20,7 +20,7 @@
 .homepage-main-content {
   overflow-y: scroll;
   flex: 1;
-  min-height: 65vh;
+  min-height: 50vh;
 }
 
 .homepage-main-content > * {

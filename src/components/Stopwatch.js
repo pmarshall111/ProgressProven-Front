@@ -65,12 +65,6 @@ class Stopwatch extends Component {
         <div className="stopwatch-controls">
           <button
             onClick={() => {
-              // if (this.props.playing.playing) clearInterval(this.interval);
-              // togglePlay(!playing.playing, {
-              //   hour: time.hour(),
-              //   minute: time.minute(),
-              //   second: time.second()
-              // });
               removeInterval();
               playing
                 ? timePauseActionCreator(new Date())
@@ -81,23 +75,18 @@ class Stopwatch extends Component {
           </button>
           <button
             onClick={() => {
-              // if (this.props.playing.playing) clearInterval(this.interval);
-              // togglePlay(!playing.playing, {
-              //   hour: time.hour(),
-              //   minute: time.minute(),
-              //   second: time.second()
-              // });
               removeInterval();
               timePauseActionCreator(new Date());
               var sendTime = document.querySelector(".send-time-container");
               sendTime.style.opacity = 1;
               sendTime.style.display = "block";
+              this.finishStamp = new Date();
             }}
           >
             Finish
           </button>
         </div>
-        <SendTime />
+        <SendTime finishStamp={this.finishStamp} />
       </div>
     );
   }

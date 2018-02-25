@@ -33,8 +33,8 @@ class DisplayGoals extends Component {
 
     console.log(userGoals);
 
-    const goals = userGoals.map(x => {
-      return <div>{x.subject}</div>;
+    const goals = userGoals.map((x, idx) => {
+      return <div key={`${x.subject}-goal-banner-${idx}`}>{x.subject}</div>;
     });
 
     var currentGoal = userGoals[0];
@@ -43,8 +43,8 @@ class DisplayGoals extends Component {
     }
 
     //need to calculate completion percentage etc in Target component
-    var targetItems = currentGoal.targets.map(x => (
-      <Targets data={x} time={currentGoal.time} />
+    var targetItems = currentGoal.targets.map((x, idx) => (
+      <Targets key={`target-${idx}`} data={x} time={currentGoal.time} />
     ));
 
     return (

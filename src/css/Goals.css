@@ -51,11 +51,14 @@
   margin: 1em 0;
 }
 
+:root {
+  --select-height: 30px;
+}
+
 .new-goal-target-items-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  --select-height: 30px;
 }
 
 .new-goal-form-container > h3 {

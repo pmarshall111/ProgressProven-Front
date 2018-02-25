@@ -19,7 +19,7 @@
   display: flex;
 }
 
-form label {
+form:not(.send-time-form) label {
   padding: 5px;
   position: absolute;
   top: 25px;
@@ -27,7 +27,7 @@ form label {
   transition: all 0.3s;
 }
 
-form input {
+form:not(.send-time-form) input {
   padding: 10px;
   margin: 20px;
   flex: 1;

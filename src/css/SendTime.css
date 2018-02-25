@@ -4,4 +4,26 @@
   left: 50%;
   transform: translate(-50%, -50%);
   background: white;
+  width: 50%;
+  grid-auto-flow: row;
+  grid-template-rows: auto 1fr;
+}
+
+.send-time-form {
+  grid-auto-flow: row;
+  grid-template-rows: repeat(4, 1fr);
+  width: 90%;
+  margin: 0 auto;
+}
+
+.send-time-form > div {
+  min-height: 50px;
+}
+
+.send-time-form p {
+  margin: 1em 0;
+}
+
+.rw-select-list ul {
+  display: flex;
 }

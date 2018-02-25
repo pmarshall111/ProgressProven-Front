@@ -47,47 +47,62 @@ export function timeChangeDayActionCreator(stamp) {
   };
 }
 
-export function timeFinishActionCreator(timeInfo, state) {
+export function timeFinishActionCreator(timeInfo, state, finishStamp) {
   //in here add stamp to time state
-  var { goalId, mood, tags, stamp } = timeInfo;
+  var { goalId, mood, tags } = timeInfo;
 
-  var sendToMongo = state.map(makeDeepCopy);
-  var { sessions } = sendToMongo[sendToMongo.length - 1];
+  var time = state.map(makeDeepCopy);
+  var { sessions } = time[time.length - 1];
 
   var lastSessionEnd = sessions[sessions.length - 1].timeFinished;
-  if (!lastSessionEnd) sessions[sessions.length - 1].timeFinished = stamp;
+  if (!lastSessionEnd) sessions[sessions.length - 1].timeFinished = finishStamp;
 
-  sendToMongo[sendToMongo.length - 1].timeFinished = stamp;
+  time[time.length - 1].timeFinished = finishStamp;
 
-  sendToMongo.forEach(day => {
+  time.forEach(day => {
     day.tags = tags;
     day.mood = mood;
   });
 
-  // console.log(sendToMongo);
-  // return async dispatch => {
-  //   var jsonData = await fetch(`${ROOT_URL}/time/new`, {
-  //     headers: {
-  //       Accept: "application/json",
-  //       "Content-Type": "application/json"
-  //     },
-  //     method: "POST",
-  //     credentials: "include",
-  //     body: JSON.stringify(sendToMongo)
-  //   });
-  //   var user = await jsonData.json();
-  //   if (!user.error) {
-  //     return dispatch({
-  //       type: CURRENT_USER,
-  //       payload: user.user
-  //     });
-  //   } else {
-  //     return dispatch({
-  //       type: DB_ERROR,
-  //       payload: user.error
-  //     });
-  //   }
-  // };
+  var sendToMongo = {
+    goalId,
+    time
+  };
+
+  console.log(sendToMongo);
+  return async dispatch => {
+    var jsonData = await fetch(`${ROOT_URL}/time/new`, {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      method: "POST",
+      credentials: "include",
+      body: JSON.stringify(sendToMongo)
+    });
+    var user = await jsonData.json();
+    console.log(user);
+    if (!user.error) {
+      //hide send-time form
+      var sendTime = document.querySelector(".send-time-container");
+      sendTime.style.opacity = 0;
+      sendTime.style.display = "none";
+
+      //reset stopwatch
+      dispatch({ type: PAUSE, payload: { hour: 0, minute: 0, second: 0 } });
+
+      //update current user
+      return dispatch({
+        type: CURRENT_USER,
+        payload: user.user ? user.user : user
+      });
+    } else {
+      return dispatch({
+        type: DB_ERROR,
+        payload: user.error
+      });
+    }
+  };
 }
 
 export function makeDeepCopy(obj) {

@@ -8,7 +8,7 @@ import {
 } from "../actions/time";
 
 export default function(state = [{}], action) {
-  console.log([action, state]);
+  // console.log([action, state]);
   var stateCopy = state.map(makeDeepCopy);
   var { sessions } = stateCopy[stateCopy.length - 1];
   switch (action.type) {

@@ -1,0 +1,13 @@
+.tooltip {
+  position: absolute;
+  background: #333;
+  color: #ddd;
+  border: 3px solid #ddd;
+  border-radius: 2px;
+  pointer-events: none;
+  padding: 0.25em;
+}
+
+.y-axis path {
+  transform: scaleY(1.5) translateY(-30%);
+}

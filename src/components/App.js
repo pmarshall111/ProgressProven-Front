@@ -13,6 +13,9 @@ import Stats from "./Stats";
 
 import Auth from "./Auth";
 import SendTime from "./SendTime";
+import Venn from "./graphs/Venn";
+import GithubGraph from "./graphs/GithubGraph";
+import DayWeekTargets from "./graphs/DayWeekTargets";
 
 import "../css/App.css";
 
@@ -47,7 +50,9 @@ class App extends Component {
           <Route exact path="/stats" component={Stats} />
           <Route exact path="/welcome" component={Welcome} />
           <Route exact path="/auth" component={Auth} />
-          <Route exact path="/test" component={SendTime} />
+          <Route exact path="/test" component={Venn} />
+          <Route exact path="/test2" component={GithubGraph} />
+          <Route exact path="/test3" component={DayWeekTargets} />
         </Switch>
       </div>
     );

@@ -1,10 +1,12 @@
+import { getAllBadges } from "./badges";
+
 export const ROOT_URL =
   process.env.NODE_ENV === "production" ? "fill in" : "http://localhost:5000";
 
 export const CURRENT_USER = "CURRENT_USER";
 export const FAILED_LOGIN = "FAILED_LOGIN";
 
-export function currentUser(callback) {
+export function currentUser(callback, badges) {
   return async function(dispatch) {
     var jsonData = await fetch(`${ROOT_URL}/current-user`, {
       method: "GET",
@@ -12,6 +14,8 @@ export function currentUser(callback) {
     });
     var user = await jsonData.json();
     if (!user.error) {
+      if (!badges) getAllBadges(user.user);
+
       return dispatch({
         type: CURRENT_USER,
         payload: user.user
@@ -44,6 +48,7 @@ export function signUpInActionCreator(details, inOrUp, callback) {
     console.log(user);
 
     if (!user.error) {
+      getAllBadges(user);
       callback();
       return dispatch({
         type: CURRENT_USER,

@@ -16,6 +16,7 @@ import SendTime from "./SendTime";
 import Venn from "./graphs/Venn";
 import GithubGraph from "./graphs/GithubGraph";
 import DayWeekTargets from "./graphs/DayWeekTargets";
+import WordCloud from "./graphs/WordCloud";
 
 import "../css/App.css";
 
@@ -31,12 +32,13 @@ class App extends Component {
 
   componentDidMount() {
     // commented out for testing
-    // if (!this.props.user) {
-    //   console.log(this.props);
-    //   this.props.currentUser(() => {
-    //     this.redirect();
-    //   });
-    // }
+    var { badges, user, currentUser } = this.props;
+    if (!user) {
+      console.log(this.props);
+      currentUser(() => {
+        this.redirect();
+      }, Boolean(badges));
+    }
   }
 
   render() {
@@ -53,6 +55,7 @@ class App extends Component {
           <Route exact path="/test" component={Venn} />
           <Route exact path="/test2" component={GithubGraph} />
           <Route exact path="/test3" component={DayWeekTargets} />
+          <Route exact path="/test4" component={WordCloud} />
         </Switch>
       </div>
     );

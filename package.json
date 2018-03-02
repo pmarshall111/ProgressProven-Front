@@ -5,6 +5,8 @@
   "dependencies": {
     "@redsift/d3-rs-venn": "0.0.3",
     "d3": "^4.13.0",
+    "d3-v4-cloud": "^1.0.0",
+    "d3.layout.cloud": "^1.2.0",
     "moment": "^2.20.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
@@ -22,5 +24,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "mocha": "^5.0.1"
   }
 }

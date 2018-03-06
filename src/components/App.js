@@ -30,7 +30,7 @@ class App extends Component {
     this.props.history.push("/welcome");
   }
 
-  componentDidMount() {
+  componentWillMount() {
     // commented out for testing
     var { badges, user, currentUser } = this.props;
     if (!user) {
@@ -62,8 +62,8 @@ class App extends Component {
   }
 }
 
-function mapStateToProps({ user }) {
-  return { user };
+function mapStateToProps({ user, areas }) {
+  return { user, areas };
 }
 
 export default withRouter(connect(mapStateToProps, { currentUser })(App));

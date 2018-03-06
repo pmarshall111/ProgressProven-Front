@@ -13,11 +13,28 @@ export function getAllBadges(user) {
 
     var calcBadgeProgress = calcBadgeProgress(badges, user);
 
-    //IMPORTANT! we want the badges to be grouped by their category when we send them off.
-    //i.e. [{category: "xyz", badges: [.....]}]
+    //altering structure to group into categories.
+    var groupedBadges = [];
+    for (let i = 0; i < calcBadgeProgress.length; i++) {
+      var currentBadge = calcBadgeProgress[i];
+      var added = false;
+      for (let j = 0; j < groupedBadges.length; j++) {
+        if (groupedBadges[j].category == currentBadge.category) {
+          groupedBadges[j].badges.push(currentBadge);
+          added = true;
+          break;
+        }
+      }
+      if (!added)
+        groupedBadges.push({
+          category: currentBadge.category,
+          badges: [currentBadge]
+        });
+    }
+
     dispatch({
       type: ALL_BADGES,
-      payload: calcBadgeProgress
+      payload: groupedBadges
     });
   };
 }

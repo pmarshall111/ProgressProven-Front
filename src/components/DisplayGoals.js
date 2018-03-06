@@ -15,21 +15,10 @@ class DisplayGoals extends Component {
 
   render() {
     //needs access to user data to display goals.
-    console.log(this.props);
 
-    var userGoals = [
-      {
-        subject: "Cooking",
-        targets: [],
-        time: []
-      },
-      { subject: "Walking Toby" },
-      { subject: "Web dev" }
-    ];
+    if (!this.props.user) return <div />;
 
-    if (this.props.user) {
-      userGoals = this.props.user.improvementAreas;
-    }
+    var userGoals = this.props.user.improvementAreas;
 
     console.log(userGoals);
 

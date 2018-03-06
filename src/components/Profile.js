@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 class Profile extends Component {
   render() {
     const { user } = this.props;
+    if (!user) return <div />;
     return (
       <div className="profile-container grid">
         <div className="img-container">

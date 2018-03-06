@@ -13,6 +13,7 @@ export function currentUser(callback, badges) {
       credentials: "include"
     });
     var user = await jsonData.json();
+
     if (!user.error) {
       if (!badges) getAllBadges(user.user);
 
@@ -32,7 +33,7 @@ export function currentUser(callback, badges) {
 }
 
 export function signUpInActionCreator(details, inOrUp, callback) {
-  console.log(details);
+  console.log({ details });
   return async dispatch => {
     var jsonData = await fetch(`${ROOT_URL}/auth/${inOrUp}`, {
       headers: {
@@ -43,16 +44,19 @@ export function signUpInActionCreator(details, inOrUp, callback) {
       credentials: "include",
       body: JSON.stringify(details)
     });
+    console.log(jsonData);
     var user = await jsonData.json();
 
     console.log(user);
 
+    console.log(user.user.improvementAreas[0].time);
+
     if (!user.error) {
-      getAllBadges(user);
+      getAllBadges(user.user);
       callback();
       return dispatch({
         type: CURRENT_USER,
-        payload: user
+        payload: user.user
       });
     } else {
       return dispatch({

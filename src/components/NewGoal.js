@@ -24,7 +24,7 @@ class NewGoal extends Component {
   render() {
     return (
       <div>
-        <Banner title="New Goal" exit="/goals" />
+        <Banner title="New Goal" exit="/home/goals" />
         <NewGoalForm onSubmit={this.submit} />
       </div>
     );

@@ -19,10 +19,45 @@ class StatsTimeSpent extends Component {
     this.setState({ selectedDate: date });
   }
 
-  render() {
-    const { user } = this.props;
+  createPoints() {
+    this.points = [];
+    const { detailedTime } = this.props;
+    console.log(this.props);
+    var cumHours = 0;
+    var indivCumHours = {};
+    //we want time start plus hours at that point.
+    detailedTime.forEach(time => {
+      var { timeStarted, timeFinished, totalHours, goal } = time;
+      if (!indivCumHours[goal.subject]) indivCumHours[goal.subject] = 0;
+      this.points.push({
+        time: timeStarted,
+        goal,
+        hours: cumHours,
+        goalHours: indivCumHours[goal.subject]
+      });
+      cumHours += totalHours;
+      indivCumHours[goal.subject] += totalHours;
+      this.points.push({
+        time: timeFinished,
+        goal,
+        hours: cumHours,
+        goalHours: indivCumHours[goal.subject]
+      });
+    });
 
-    if (!user) return <div />;
+    this.indivCumHours = indivCumHours;
+
+    this.points.sort((a, b) => {
+      if (a.time > b.time) return 1;
+      return -1;
+    });
+  }
+
+  render() {
+    const { user, detailedTime } = this.props;
+    console.log({ user, detailedTime });
+    if (!user || !detailedTime.length) return <div />;
+    this.createPoints();
 
     var options = user.improvementAreas.map(x => {
       return (
@@ -38,24 +73,43 @@ class StatsTimeSpent extends Component {
       </option>
     );
 
-    // var monthLineData = graphData.map(
-    //   goal =>
-    //     (goal.time = goal.time.filter(y =>
-    //       moment(y.timeStarted).isSame(this.state.selectedDate, "month")
-    //     ))
-    // );
-    // var weekLineData = graphData.map(
-    //   goal =>
-    //     (goal.time = goal.time.filter(y =>
-    //       moment(y.timeStarted).isSame(this.state.selectedDate, "week")
-    //     ))
-    // );
-    // var dayLineData = graphData.map(
-    //   goal =>
-    //     (goal.time = goal.time.filter(y =>
-    //       moment(y.timeStarted).isSame(this.state.selectedDate, "day")
-    //     ))
-    // );
+    console.log(this.points);
+
+    var allTimeData =
+      this.state.goal == "all"
+        ? this.points
+        : this.points.filter(x => x.goal.subject == this.state.goal);
+
+    if (moment(this.points[0].time).isBefore(allTimeData[0].time)) {
+      allTimeData.unshift({
+        time: this.points[0].time,
+        goal: { subject: this.state.goal },
+        goalHours: 0
+      });
+    }
+    if (
+      moment()
+        .startOf("day")
+        .isAfter(allTimeData[allTimeData.length - 1].time)
+    ) {
+      if (this.state.goal === "all") {
+        var goals = user.improvementAreas.map(x => x.subject);
+        for (let i = 0; i < goals.length; i++) {
+          allTimeData.push({
+            time: moment(),
+            goal: { subject: goals[i] },
+            goalHours: this.indivCumHours[goals[i]],
+            hours: allTimeData[allTimeData.length - 1].hours
+          });
+        }
+      } else
+        allTimeData.push({
+          time: moment(),
+          goal: { subject: this.state.goal },
+          goalHours: this.indivCumHours[this.state.goal],
+          hours: allTimeData[allTimeData.length - 1].hours
+        });
+    }
 
     return (
       <div className="time-spent-stats-container">
@@ -69,9 +123,11 @@ class StatsTimeSpent extends Component {
         >
           {options}
         </select>
-        <GithubGraph
-          changeState={this.changeDay}
-          data={user.days}
+
+        <LineGraph
+          goals={user.improvementAreas.map(x => x.subject)}
+          times={allTimeData}
+          period="all-time"
           filter={this.state.goal}
         />
       </div>
@@ -79,8 +135,14 @@ class StatsTimeSpent extends Component {
   }
 }
 
-function mapStateToProps({ areas, user }) {
-  return { areas, user };
+// <GithubGraph
+//   changeState={this.changeDay}
+//   data={user.days}
+//   filter={this.state.goal}
+// />
+
+function mapStateToProps({ detailedTime, user }) {
+  return { detailedTime, user };
 }
 
 export default connect(mapStateToProps)(StatsTimeSpent);

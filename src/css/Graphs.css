@@ -11,3 +11,7 @@
 .y-axis path {
   transform: scaleY(1.5) translateY(-6.6%);
 }
+
+path {
+  fill: "transparent";
+}

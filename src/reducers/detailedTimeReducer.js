@@ -1,10 +1,9 @@
-import { ALL_BADGES } from "../actions/badges";
+import { DETAILED_TIME } from "../actions/detailedTime";
 
 export default function(state = [], action) {
-  console.log(action);
   switch (action.type) {
-    case ALL_BADGES:
-      console.log({ badges: action.payload });
+    case DETAILED_TIME:
+      console.log(action.payload);
       return action.payload;
     default:
       return state;

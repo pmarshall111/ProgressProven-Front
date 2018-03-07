@@ -1,4 +1,5 @@
 import { getAllBadges } from "./badges";
+import { getDetailedTimes } from "./detailedTime";
 
 export const ROOT_URL =
   process.env.NODE_ENV === "production" ? "fill in" : "http://localhost:5000";
@@ -15,16 +16,17 @@ export function currentUser(callback, badges) {
     var user = await jsonData.json();
 
     if (!user.error) {
-      if (!badges) getAllBadges(user.user);
+      // if (!badges) dispatch(getAllBadges(user.user));
+      dispatch(getDetailedTimes());
 
-      return dispatch({
+      dispatch({
         type: CURRENT_USER,
         payload: user.user
       });
     } else {
       console.log("activating callback");
       callback();
-      return dispatch({
+      dispatch({
         type: FAILED_LOGIN,
         payload: user.error
       });
@@ -52,14 +54,15 @@ export function signUpInActionCreator(details, inOrUp, callback) {
     console.log(user.user.improvementAreas[0].time);
 
     if (!user.error) {
-      getAllBadges(user.user);
+      // getAllBadges(user.user);
+      dispatch(getDetailedTimes());
       callback();
-      return dispatch({
+      dispatch({
         type: CURRENT_USER,
         payload: user.user
       });
     } else {
-      return dispatch({
+      dispatch({
         type: FAILED_LOGIN,
         payload: user.error
       });

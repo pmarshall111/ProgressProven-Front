@@ -5,7 +5,7 @@ import userReducer from "./userReducer";
 import timeReducer from "./timeReducer";
 import playingReducer from "./playingReducer";
 import badgesReducer from "./badgesReducer";
-import areasReducer from "./areasReducer";
+import detailedTimeReducer from "./detailedTimeReducer";
 
 export default combineReducers({
   form: formReducer,
@@ -13,5 +13,5 @@ export default combineReducers({
   time: timeReducer,
   playing: playingReducer,
   badges: badgesReducer,
-  areas: areasReducer
+  detailedTime: detailedTimeReducer
 });
